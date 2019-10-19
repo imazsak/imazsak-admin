@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { Observable } from 'rxjs';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
-import { map, shareReplay } from 'rxjs/operators';
+import {filter, map, shareReplay} from 'rxjs/operators';
+import {NavigationStart, Router, RouterEvent} from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -16,5 +17,13 @@ export class AppComponent {
       shareReplay()
     );
 
-  constructor(private breakpointObserver: BreakpointObserver) {}
+  isLogin = false;
+
+  constructor(private breakpointObserver: BreakpointObserver, private router: Router) {
+    router.events.subscribe(e => {
+      if (e instanceof NavigationStart) {
+        this.isLogin = e.url === '/login';
+      }
+    });
+  }
 }
