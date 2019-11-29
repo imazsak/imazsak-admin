@@ -2,6 +2,7 @@ import {Component} from '@angular/core';
 import {Observable} from 'rxjs';
 import {BreakpointObserver, Breakpoints} from '@angular/cdk/layout';
 import {map, shareReplay} from 'rxjs/operators';
+import {AuthService} from './auth.service';
 
 @Component({
   selector: 'app-root',
@@ -18,6 +19,6 @@ export class AppComponent {
 
   manualOpen = false;
 
-  constructor(private breakpointObserver: BreakpointObserver) {
+  constructor(private breakpointObserver: BreakpointObserver, public authService: AuthService) {
   }
 }
