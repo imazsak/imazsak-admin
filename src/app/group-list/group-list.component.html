@@ -1,0 +1,28 @@
+<div class="container">
+  <div class="page-action-button">
+    <button mat-mini-fab color="primary" (click)="openGroupCreateDialog()">
+      <mat-icon>add</mat-icon>
+    </button>
+  </div>
+  <h1 class="mat-h1">Közösségek</h1>
+  <mat-form-field>
+    <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+  </mat-form-field>
+  <table mat-table [dataSource]="dataSource">
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef>ID</th>
+      <td mat-cell *matCellDef="let row">{{row.id}}</td>
+    </ng-container>
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef>Név</th>
+      <td mat-cell *matCellDef="let row">{{row.name}}</td>
+    </ng-container>
+    <ng-container matColumnDef="members">
+      <th mat-header-cell *matHeaderCellDef>Tagok</th>
+      <td mat-cell *matCellDef="let row">{{row.members.length}}</td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+</div>

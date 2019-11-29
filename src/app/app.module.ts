@@ -12,9 +12,14 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatListModule} from '@angular/material/list';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
+import {MatTableModule} from '@angular/material/table';
 import {TodoComponent} from './todo/todo.component';
 import {AuthInterceptor} from './auth.interceptor';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
+import {GroupListComponent} from './group-list/group-list.component';
+import {GroupCreateDialogComponent} from './group-create-dialog/group-create-dialog.component';
+import {MatDialogModule} from '@angular/material';
+import {FormsModule} from '@angular/forms';
 
 const httpInterceptorProviders = [
   {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}
@@ -24,9 +29,15 @@ const httpInterceptorProviders = [
   declarations: [
     AppComponent,
     TodoComponent,
+    GroupListComponent,
+    GroupCreateDialogComponent,
+  ],
+  entryComponents: [
+    GroupCreateDialogComponent,
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     HttpClientModule,
     AppRoutingModule,
     BrowserAnimationsModule,
@@ -37,7 +48,9 @@ const httpInterceptorProviders = [
     MatIconModule,
     MatListModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    MatTableModule,
+    MatDialogModule,
   ],
   providers: [httpInterceptorProviders],
   bootstrap: [AppComponent]

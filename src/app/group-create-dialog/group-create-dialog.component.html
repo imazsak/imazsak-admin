@@ -1,0 +1,13 @@
+<h1 mat-dialog-title>Közösség létrehozása</h1>
+<div mat-dialog-content class="flex-form">
+  <mat-form-field>
+    <input matInput placeholder="Név" [(ngModel)]="model.name">
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput placeholder="Admin ID" [(ngModel)]="model.adminUserId">
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="dialogRef.close()">Mégse</button>
+  <button mat-button [mat-dialog-close]="model">Mentés</button>
+</div>
