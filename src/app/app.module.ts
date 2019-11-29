@@ -13,6 +13,12 @@ import {MatListModule} from '@angular/material/list';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {TodoComponent} from './todo/todo.component';
+import {AuthInterceptor} from './auth.interceptor';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
+
+const httpInterceptorProviders = [
+  {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}
+];
 
 @NgModule({
   declarations: [
@@ -21,6 +27,7 @@ import {TodoComponent} from './todo/todo.component';
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     LayoutModule,
@@ -32,7 +39,7 @@ import {TodoComponent} from './todo/todo.component';
     MatFormFieldModule,
     MatInputModule
   ],
-  providers: [],
+  providers: [httpInterceptorProviders],
   bootstrap: [AppComponent]
 })
 export class AppModule {

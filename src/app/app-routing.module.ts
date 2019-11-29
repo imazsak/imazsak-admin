@@ -1,14 +1,15 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {TodoComponent} from './todo/todo.component';
+import {AuthGuard} from './auth.guard';
 
 
 const routes: Routes = [
-  {path: 'home', component: TodoComponent},
-  {path: 'groups', component: TodoComponent},
-  {path: 'users', component: TodoComponent},
-  {path: 'prayers', component: TodoComponent},
-  {path: 'feedback', component: TodoComponent},
+  {path: 'home', component: TodoComponent, canActivate: [AuthGuard]},
+  {path: 'groups', component: TodoComponent, canActivate: [AuthGuard]},
+  {path: 'users', component: TodoComponent, canActivate: [AuthGuard]},
+  {path: 'prayers', component: TodoComponent, canActivate: [AuthGuard]},
+  {path: 'feedback', component: TodoComponent, canActivate: [AuthGuard]},
   {path: '', redirectTo: '/home', pathMatch: 'full'},
 ];
 
