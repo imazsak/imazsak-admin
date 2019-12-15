@@ -19,6 +19,7 @@ import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {GroupListComponent} from './group-list/group-list.component';
 import {GroupCreateDialogComponent} from './group-create-dialog/group-create-dialog.component';
 import {MatDialogModule} from '@angular/material';
+import {MatSelectModule} from '@angular/material/select';
 import {FormsModule} from '@angular/forms';
 
 const httpInterceptorProviders = [
@@ -51,6 +52,7 @@ const httpInterceptorProviders = [
     MatInputModule,
     MatTableModule,
     MatDialogModule,
+    MatSelectModule,
   ],
   providers: [httpInterceptorProviders],
   bootstrap: [AppComponent]

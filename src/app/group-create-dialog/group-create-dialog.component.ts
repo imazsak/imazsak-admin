@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {MatDialogRef} from '@angular/material';
-import {CreateGroupRequest} from '../imazsak.service';
+import {CreateGroupRequest, ImazsakService, UserAdminListData} from '../imazsak.service';
 
 @Component({
   selector: 'app-group-create-dialog',
@@ -14,7 +14,10 @@ export class GroupCreateDialogComponent {
     adminUserId: ''
   } as CreateGroupRequest;
 
-  constructor(public dialogRef: MatDialogRef<GroupCreateDialogComponent>) {
+  users: UserAdminListData[] = [];
+
+  constructor(public dialogRef: MatDialogRef<GroupCreateDialogComponent>, private imazsak: ImazsakService) {
+    imazsak.listUsers().subscribe(users => this.users = users);
   }
 
 }

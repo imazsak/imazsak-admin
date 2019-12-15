@@ -4,7 +4,9 @@
     <input matInput placeholder="Név" [(ngModel)]="model.name">
   </mat-form-field>
   <mat-form-field>
-    <input matInput placeholder="Admin ID" [(ngModel)]="model.adminUserId">
+    <mat-select placeholder="Admin" [(ngModel)]="model.adminUserId">
+      <mat-option *ngFor="let user of users" [value]="user.id">{{user.name}} - {{user.id}})</mat-option>
+    </mat-select>
   </mat-form-field>
 </div>
 <div mat-dialog-actions>
